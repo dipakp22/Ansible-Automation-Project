@@ -1,13 +1,11 @@
 # Ansible-Automation-Project
 Configure Ansible Client to act as a Jump Server/Bastion Host and Create a simple Ansible Playbook to automate server configuration.
-# Ansible Client as a Jump Server (Bastion Host)
+
 A [Jump Server](https://en.wikipedia.org/wiki/Jump_server) (sometimes also referred to as [Bastion Host](https://en.wikipedia.org/wiki/Bastion_host)) is an intermediary server through which access to the internal network can be provided. If you think about the current architecture you are working on, ideally the Web Servers would be inside a secured network that cannot be reached directly from the Internet. That means DevOps engineers cannot `SSH` into the Web Servers directly and can only access it through a Jump Server. It provides better security and reduces [attack surface](https://en.wikipedia.org/wiki/Attack_surface).
 
 In the diagram below, the Virtual Private Network (VPC) is divided into two subnets (i.e. Public Subnet has Public IP Addresses and Private Subnet is only reachable by Private IP addresses).
 
 ![alt text](https://github.com/dipakp22/Ansible-Automation-Project/blob/main/Images/VPC%20Diagram.png)
-
-## How to Install and Configure Ansible Client to act as a Jump Server/Bastion Host and Create a simple Ansible Playbook to automate server configuration
 
 ### Prerequistes
 1. Jenkins Server
@@ -19,7 +17,7 @@ In the diagram below, the Virtual Private Network (VPC) is divided into two subn
 
 The following steps are taken to install and configure **Ansible Client** as a **Jump Server/Bastion Host** and create a simple Ansible Playbook to automate server configuration:
 
-### Step 1: Install and Configure Jenkins and Ansible on an EC2 Instance
+## Step 1: Install and Configure Jenkins and Ansible on an EC2 Instance
 
 * Create a new repository in your GitHub account.
 * Create an EC2 Instance and name it `Jenkins-Ansible`. This server will be used to run playbooks.
@@ -52,7 +50,7 @@ ansible --version
 
 ![log into jenkins](./images/2.%20log%20into%20jenkins.png)
 
-* Create a new Freestyle Job called `ansible`, select **discard old builds** then give it a maximum of 2 builds to keep and point it to your `ansible-config-mgt` repository.
+* Create a new Freestyle Job called `ansible`, select **discard old builds** then give it a maximum of 2 builds to keep and point it to your `Ansible-Automation-Project` repository.
 
 ![ansible job1](./images/2.%20ansible%20freestyle%20job1.png)
 
@@ -68,7 +66,7 @@ ansible --version
 
 ### Step 3: Configure a webhook in GitHub and set the webhook to trigger Ansible build
 
-* Go to the `ansible-config-mgt` repository on your GitHub account and click on settings.
+* Go to the `Ansible-Automation-Project` repository on your GitHub account and click on settings.
 
 ![ansible config mgt repo settings](./images/3.%20ansible-config-mgt%20repository.png)
 
