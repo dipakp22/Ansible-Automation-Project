@@ -5,7 +5,7 @@ A [Jump Server](https://en.wikipedia.org/wiki/Jump_server) (sometimes also refer
 
 In the diagram below, the Virtual Private Network (VPC) is divided into two subnets (i.e. Public Subnet has Public IP Addresses and Private Subnet is only reachable by Private IP addresses).
 
-![bastion host](./images/0.%20bastion%20host.png)
+Images/VPC Diagram.png
 
 ## How to Install and Configure Ansible Client to act as a Jump Server/Bastion Host and Create a simple Ansible Playbook to automate server configuration
 
