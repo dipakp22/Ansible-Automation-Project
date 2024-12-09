@@ -19,38 +19,36 @@ In the diagram below, the Virtual Private Network (VPC) is divided into two subn
 
 The following steps are taken to install and configure **Ansible Client** as a **Jump Server/Bastion Host** and create a simple Ansible Playbook to automate server configuration:
 
-### Step 1: Install and Configure Ansible on an EC2 Instance
+### Step 1: Install and Configure Jenkins and Ansible on an EC2 Instance
 
-* Create a new repository called in your GitHub account.
-
+* Create a new repository in your GitHub account.
 * Create an EC2 Instance and name it `Jenkins-Ansible`. This server will be used to run playbooks.
 
 ![alt text](<img width="954" alt="image" src="https://github.com/user-attachments/assets/fbe8c661-b61b-4cdd-a4a5-81a17d62a264">
 )
-
-* Install Ansible on the `Jenkins-Ansible` server.
-
 ```sh
-sudo apt update && sudo apt install ansible -y
+sudo apt update && sudo apt upgrade -y
 ```
-
-![apt update & install ansible](./images/1.%20apt%20update%20&%20install%20ansible.png)
-
-* Check the version of Ansible running on your instance by running the following command:
-
+* Install Jenkins on the Server.
 ```sh
-ansible --version
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
 ```
-
-![ansible version](./images/1.%20ansible%20version.png)
-
-### Step 2: Configure Jenkins Build Job to archive your repository every time changes are made
-
-* Log into Jenkins.
-
+* Log into Jenkins and Follow the instructions and set the login details.
 ```sh
 http://public_ip_jenkins_ansible_instance:8080
 ```
+* Install Ansible on the `Jenkins-Ansible` server.
+```sh
+sudo apt install ansible -y
+ansible --version
+```
+### Step 2: Configure Jenkins Build Job to archive your repository every time changes are made
 
 ![log into jenkins](./images/2.%20log%20into%20jenkins.png)
 
